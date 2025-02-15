@@ -15,25 +15,34 @@ const Index = () => {
             backgroundImage: "url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9')",
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60 backdrop-blur-[2px]" />
         </div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <div className="animate-fade-in [--animation-delay:200ms]">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight drop-shadow-lg">
               Find Your Perfect <span className="text-blue-400">Luxury Home</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90 font-light">
+            <p className="text-xl md:text-2xl mb-8 text-white/90 font-light drop-shadow-lg">
               Discover exclusive properties in prime locations
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button asChild size="lg" className="w-full sm:w-auto text-lg bg-blue-600 hover:bg-blue-700">
+              <Button 
+                asChild 
+                size="lg" 
+                className="w-full sm:w-auto text-lg bg-blue-600 hover:bg-blue-700 shadow-lg hover:shadow-xl transition-all duration-300"
+              >
                 <Link to="/properties" className="flex items-center gap-2">
                   <HouseIcon className="w-5 h-5" />
                   Explore Properties
                 </Link>
               </Button>
-              <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto text-lg bg-white text-black hover:bg-gray-100">
+              <Button 
+                asChild 
+                variant="secondary" 
+                size="lg" 
+                className="w-full sm:w-auto text-lg bg-white/90 hover:bg-white text-black shadow-lg hover:shadow-xl transition-all duration-300"
+              >
                 <Link to="/contact" className="flex items-center gap-2">
                   <MapPin className="w-5 h-5" />
                   Contact Us
