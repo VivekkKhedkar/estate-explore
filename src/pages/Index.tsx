@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Bath, BedDouble, Building2, DollarSign, Expand, HouseIcon, Layout, MapPin, Phone, Star } from "lucide-react";
+import { Bath, BedDouble, Building2, DollarSign, Expand, HouseIcon, Layout, Mail, MapPin, Phone, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Index = () => {
