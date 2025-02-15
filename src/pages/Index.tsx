@@ -1,131 +1,140 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Bath, BedDouble, Building2, DollarSign, Expand, HouseIcon, Layout, MapPin, Phone } from "lucide-react";
+import { Bath, BedDouble, Building2, DollarSign, Expand, HouseIcon, Layout, MapPin, Phone, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
     <div className="animate-fade-in">
-      {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center justify-center">
+      {/* Hero Section with Dynamic Background */}
+      <section className="relative h-[95vh] flex items-center justify-center">
         <div
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-0 bg-cover bg-center animate-fade-in"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundImage: "url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9')",
           }}
         >
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30 backdrop-blur-sm" />
         </div>
         
-        <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Discover Your Dream Home
-          </h1>
-          <p className="text-lg md:text-xl mb-8 text-white">
-            Explore our curated collection of premium properties
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button asChild size="lg" className="w-full sm:w-auto">
-              <Link to="/properties" className="flex items-center gap-2">
-                <HouseIcon className="w-5 h-5" />
-                View Properties
-              </Link>
-            </Button>
-            <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto bg-white text-black hover:bg-gray-100">
-              <Link to="/contact" className="flex items-center gap-2">
-                <MapPin className="w-5 h-5" />
-                Contact Us
-              </Link>
-            </Button>
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+          <div className="animate-fade-in [--animation-delay:200ms]">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight">
+              Find Your Perfect <span className="text-blue-400">Luxury Home</span>
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 text-white/90 font-light">
+              Discover exclusive properties in prime locations
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button asChild size="lg" className="w-full sm:w-auto text-lg bg-blue-600 hover:bg-blue-700">
+                <Link to="/properties" className="flex items-center gap-2">
+                  <HouseIcon className="w-5 h-5" />
+                  Explore Properties
+                </Link>
+              </Button>
+              <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto text-lg bg-white text-black hover:bg-gray-100">
+                <Link to="/contact" className="flex items-center gap-2">
+                  <MapPin className="w-5 h-5" />
+                  Contact Us
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats Section */}
+        <div className="absolute bottom-0 left-0 right-0 bg-white/10 backdrop-blur-md">
+          <div className="container mx-auto py-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+              <div>
+                <p className="text-3xl font-bold mb-1">200+</p>
+                <p className="text-sm">Properties Sold</p>
+              </div>
+              <div>
+                <p className="text-3xl font-bold mb-1">95%</p>
+                <p className="text-sm">Happy Clients</p>
+              </div>
+              <div>
+                <p className="text-3xl font-bold mb-1">15+</p>
+                <p className="text-sm">Years Experience</p>
+              </div>
+              <div>
+                <p className="text-3xl font-bold mb-1">100+</p>
+                <p className="text-sm">Active Listings</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Property Types Section */}
+      {/* Featured Properties Section with Improved Cards */}
       <section className="section-padding bg-gray-50">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-black">Browse by Property Type</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-black">Featured Properties</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Explore our handpicked selection of premium properties in the most desirable locations
+            </p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Luxury Apartments", count: 24, icon: Building2, image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00" },
-              { title: "Modern Villas", count: 15, icon: HouseIcon, image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750" },
-              { title: "Penthouses", count: 8, icon: Building2, image: "https://images.unsplash.com/photo-1577495508326-b2c987fdb373" }
-            ].map((type, i) => (
-              <Card key={i} className="overflow-hidden group cursor-pointer">
-                <div className="relative h-64">
-                  <img
-                    src={type.image}
-                    alt={type.title}
-                    className="w-full h-full object-cover transition-transform group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                    <div className="text-center text-white">
-                      <type.icon className="w-12 h-12 mb-4 mx-auto" />
-                      <h3 className="text-xl font-semibold mb-2">{type.title}</h3>
-                      <p>{type.count} Properties</p>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Properties Section */}
-      <section className="section-padding">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-black">Featured Properties</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
               {
-                title: "Luxury Villa",
-                location: "Beverly Hills, CA",
-                price: "$2,500,000",
-                image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
-                beds: 4,
-                baths: 3,
-                size: "3,200 sq ft"
+                title: "Modern Villa",
+                location: "Beverly Hills",
+                price: "$4.5M",
+                image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9",
+                beds: 5,
+                baths: 4,
+                size: "4,200 sq ft",
+                featured: true
               },
               {
-                title: "Modern Apartment",
+                title: "Luxury Penthouse",
                 location: "Downtown LA",
-                price: "$1,200,000",
-                image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00",
-                beds: 2,
-                baths: 2,
-                size: "1,800 sq ft"
+                price: "$3.2M",
+                image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
+                beds: 3,
+                baths: 3,
+                size: "2,800 sq ft",
+                featured: true
               },
               {
-                title: "Penthouse Suite",
-                location: "Santa Monica",
-                price: "$3,800,000",
-                image: "https://images.unsplash.com/photo-1577495508326-b2c987fdb373",
-                beds: 3,
-                baths: 3.5,
-                size: "2,500 sq ft"
-              }
+                title: "Waterfront Estate",
+                location: "Malibu",
+                price: "$8.9M",
+                image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
+                beds: 6,
+                baths: 5,
+                size: "6,500 sq ft",
+                featured: true
+              },
             ].map((property, i) => (
-              <Card key={i} className="overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="relative h-64">
+              <Card key={i} className="group overflow-hidden hover:shadow-2xl transition-all duration-300 border-0">
+                <div className="relative h-72">
                   <img
                     src={property.image}
                     alt={property.title}
-                    className="w-full h-full object-cover transition-transform duration-300"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                    <h3 className="text-xl font-semibold mb-2">{property.title}</h3>
-                    <p className="flex items-center gap-2 mb-2">
+                  {property.featured && (
+                    <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full flex items-center gap-1">
+                      <Star className="w-4 h-4" />
+                      Featured
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h3 className="text-2xl font-bold mb-2 group-hover:text-blue-400 transition-colors">
+                      {property.title}
+                    </h3>
+                    <p className="flex items-center gap-2 text-white/90 mb-3">
                       <MapPin className="w-4 h-4" />
                       {property.location}
                     </p>
                     <div className="flex items-center justify-between">
-                      <span className="text-xl font-bold">{property.price}</span>
-                      <div className="flex items-center gap-4">
+                      <span className="text-2xl font-bold text-blue-400">{property.price}</span>
+                      <div className="flex items-center gap-4 text-white/90">
                         <span className="flex items-center gap-1">
                           <BedDouble className="w-4 h-4" />
                           {property.beds}
@@ -146,124 +155,113 @@ const Index = () => {
             ))}
           </div>
           <div className="text-center mt-12">
-            <Button asChild size="lg">
-              <Link to="/properties">View All Properties</Link>
+            <Button asChild size="lg" variant="outline" className="bg-white hover:bg-gray-50">
+              <Link to="/properties" className="text-lg">View All Properties</Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Price Range Section */}
-      <section className="section-padding bg-gray-50">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-black">Browse by Price Range</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {[
-              { range: "Under $1M", icon: DollarSign, count: 45 },
-              { range: "$1M - $2M", icon: DollarSign, count: 32 },
-              { range: "$2M - $3M", icon: DollarSign, count: 18 },
-              { range: "$3M+", icon: DollarSign, count: 12 }
-            ].map((price, i) => (
-              <Card key={i} className="text-center hover:shadow-lg transition-shadow cursor-pointer">
-                <CardHeader>
-                  <div className="mx-auto p-3 rounded-full bg-blue-100 mb-4">
-                    <price.icon className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <CardTitle>{price.range}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">{price.count} Properties</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Floor Plans Section */}
+      {/* Luxury Living Section */}
       <section className="section-padding">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-black">Popular Floor Plans</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { type: "Studio Apartment", size: "600-800 sq ft", price: "From $500,000" },
-              { type: "2 Bedroom Suite", size: "1,200-1,400 sq ft", price: "From $1,200,000" },
-              { type: "Penthouse", size: "2,500-3,000 sq ft", price: "From $2,500,000" }
-            ].map((plan, i) => (
-              <Card key={i} className="text-center hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="mx-auto p-3 rounded-full bg-gray-100 mb-4">
-                    <Layout className="w-6 h-6 text-gray-600" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-4xl font-bold mb-6 text-black">Experience Luxury Living</h2>
+              <p className="text-gray-600 mb-8 text-lg">
+                We offer an exclusive collection of premium properties in the most sought-after locations. 
+                Our expertise in luxury real estate ensures you find the perfect home that matches your lifestyle.
+              </p>
+              <div className="grid grid-cols-2 gap-6">
+                {[
+                  { title: "Premium Locations", value: "20+ Areas" },
+                  { title: "Luxury Properties", value: "100+ Listings" },
+                  { title: "Happy Clients", value: "500+" },
+                  { title: "Expert Agents", value: "30+" }
+                ].map((stat, i) => (
+                  <div key={i} className="bg-gray-50 p-4 rounded-lg">
+                    <p className="text-2xl font-bold text-blue-600 mb-1">{stat.value}</p>
+                    <p className="text-gray-600">{stat.title}</p>
                   </div>
-                  <CardTitle>{plan.type}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-2">{plan.size}</p>
-                  <p className="text-blue-600 font-semibold">{plan.price}</p>
-                </CardContent>
-              </Card>
-            ))}
+                ))}
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <img
+                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c"
+                alt="Luxury Interior"
+                className="rounded-lg w-full h-48 object-cover"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3"
+                alt="Modern Architecture"
+                className="rounded-lg w-full h-48 object-cover translate-y-8"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+                alt="Elegant Design"
+                className="rounded-lg w-full h-48 object-cover"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1600573472592-401b489a3cdc"
+                alt="Premium Living"
+                className="rounded-lg w-full h-48 object-cover -translate-y-8"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="section-padding bg-gray-900 text-white">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
-              <p className="text-gray-300 mb-8">
-                Let us help you find your perfect home. Our expert team is ready to assist you
-                with any questions you may have.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center gap-4">
-                  <Phone className="w-6 h-6 text-blue-400" />
-                  <div>
-                    <p className="font-semibold">Call Us</p>
-                    <p className="text-gray-300">(555) 123-4567</p>
-                  </div>
+      {/* Contact Section with Enhanced Design */}
+      <section className="section-padding bg-gray-900 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <img
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+            alt="Background"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="container mx-auto relative z-10">
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <h2 className="text-4xl font-bold text-white mb-4">Ready to Find Your Dream Home?</h2>
+            <p className="text-gray-300 text-lg">
+              Contact our team of experts to start your journey towards luxury living
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="bg-white/10 backdrop-blur-md border-0">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center mb-4 mx-auto">
+                  <Phone className="w-6 h-6 text-white" />
                 </div>
-                <div className="flex items-center gap-4">
-                  <MapPin className="w-6 h-6 text-blue-400" />
-                  <div>
-                    <p className="font-semibold">Visit Us</p>
-                    <p className="text-gray-300">123 Real Estate Avenue, Beverly Hills, CA</p>
-                  </div>
+                <CardTitle className="text-center text-white">Call Us</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-gray-300">(555) 123-4567</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-white/10 backdrop-blur-md border-0">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center mb-4 mx-auto">
+                  <MapPin className="w-6 h-6 text-white" />
                 </div>
-              </div>
-            </div>
-            <div>
-              <Card>
-                <CardContent className="p-6">
-                  <form className="space-y-4">
-                    <div>
-                      <input
-                        type="text"
-                        placeholder="Your Name"
-                        className="w-full px-4 py-2 rounded-lg border"
-                      />
-                    </div>
-                    <div>
-                      <input
-                        type="email"
-                        placeholder="Your Email"
-                        className="w-full px-4 py-2 rounded-lg border"
-                      />
-                    </div>
-                    <div>
-                      <textarea
-                        rows={4}
-                        placeholder="Your Message"
-                        className="w-full px-4 py-2 rounded-lg border"
-                      ></textarea>
-                    </div>
-                    <Button className="w-full">Send Message</Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </div>
+                <CardTitle className="text-center text-white">Visit Us</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-gray-300">123 Luxury Avenue, Beverly Hills</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-white/10 backdrop-blur-md border-0">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center mb-4 mx-auto">
+                  <Mail className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle className="text-center text-white">Email Us</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-gray-300">info@luxuryestates.com</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
