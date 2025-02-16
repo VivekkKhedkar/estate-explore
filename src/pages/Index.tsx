@@ -3,8 +3,23 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Bath, BedDouble, Building2, DollarSign, Expand, HouseIcon, Layout, Mail, MapPin, Phone, Star } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Index = () => {
+  useEffect(() => {
+    // Update document title and favicon
+    document.title = "Estate Elegance - Luxury Homes in Pune";
+    
+    // Create a dynamic favicon using Building2 icon
+    const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
+    if (!favicon) {
+      const newFavicon = document.createElement('link');
+      newFavicon.rel = 'icon';
+      newFavicon.href = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2360A5FA"><path d="M3 21h18v-3h-3v-3h3v-3h-3v-3h3V6h-6V3H9v3H3v3h3v3H3v3h3v3H3v3zm12-3h-3v3h3v-3z"/></svg>';
+      document.head.appendChild(newFavicon);
+    }
+  }, []);
+
   return (
     <div className="animate-fade-in">
       {/* Hero Section with Dynamic Background */}
