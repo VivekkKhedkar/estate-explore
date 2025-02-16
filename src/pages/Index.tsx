@@ -1,29 +1,18 @@
-
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Bath, BedDouble, Building2, DollarSign, Expand, HouseIcon, Layout, Mail, MapPin, Phone, Star } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { Bath, BedDouble, Building2, Expand, HouseIcon, Mail, MapPin, Phone, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
 const Index = () => {
   useEffect(() => {
-    // Update document title and favicon
     document.title = "Estate Elegance - Luxury Homes in Pune";
-    
-    // Create a dynamic favicon using Building2 icon
-    const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
-    if (!favicon) {
-      const newFavicon = document.createElement('link');
-      newFavicon.rel = 'icon';
-      newFavicon.href = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2360A5FA"><path d="M3 21h18v-3h-3v-3h3v-3h-3v-3h3V6h-6V3H9v3H3v3h3v3H3v3h3v3H3v3zm12-3h-3v3h3v-3z"/></svg>';
-      document.head.appendChild(newFavicon);
-    }
   }, []);
 
   return (
     <div className="animate-fade-in">
       {/* Hero Section with Dynamic Background */}
-      <section className="relative h-[95vh] flex items-center justify-center">
+      <section className="relative h-[90vh] md:h-[95vh] flex items-center justify-center">
         <div
           className="absolute inset-0 z-0 bg-cover bg-center animate-fade-in"
           style={{
@@ -35,11 +24,11 @@ const Index = () => {
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <div className="animate-fade-in [--animation-delay:200ms]">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight drop-shadow-lg">
+            <h1 className="text-4xl md:text-7xl font-bold mb-6 text-white leading-tight drop-shadow-lg">
               Find Your Perfect <span className="text-blue-400">Luxury Home</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90 font-light drop-shadow-lg">
-              Discover exclusive properties in prime locations
+            <p className="text-lg md:text-2xl mb-8 text-white/90 font-light drop-shadow-lg">
+              Discover exclusive properties in prime locations across Pune
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button 
@@ -70,21 +59,21 @@ const Index = () => {
         {/* Stats Section */}
         <div className="absolute bottom-0 left-0 right-0 bg-white/10 backdrop-blur-md">
           <div className="container mx-auto py-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center text-white px-4">
               <div>
-                <p className="text-3xl font-bold mb-1">200+</p>
+                <p className="text-2xl md:text-3xl font-bold mb-1">200+</p>
                 <p className="text-sm">Properties Sold</p>
               </div>
               <div>
-                <p className="text-3xl font-bold mb-1">95%</p>
+                <p className="text-2xl md:text-3xl font-bold mb-1">95%</p>
                 <p className="text-sm">Happy Clients</p>
               </div>
               <div>
-                <p className="text-3xl font-bold mb-1">15+</p>
+                <p className="text-2xl md:text-3xl font-bold mb-1">15+</p>
                 <p className="text-sm">Years Experience</p>
               </div>
               <div>
-                <p className="text-3xl font-bold mb-1">100+</p>
+                <p className="text-2xl md:text-3xl font-bold mb-1">100+</p>
                 <p className="text-sm">Active Listings</p>
               </div>
             </div>
@@ -92,21 +81,21 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Featured Properties Section with Improved Cards */}
+      {/* Featured Properties Section */}
       <section className="section-padding bg-gray-50">
-        <div className="container mx-auto">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 text-black">Featured Properties</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">Featured Properties</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Explore our handpicked selection of premium properties in the most desirable locations
+              Explore our handpicked selection of premium properties in the most desirable locations of Pune
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {[
               {
-                title: "Modern Villa",
-                location: "Beverly Hills",
-                price: "$4.5M",
+                title: "Luxury Villa",
+                location: "Koregaon Park",
+                price: "₹4.5 Cr",
                 image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9",
                 beds: 5,
                 baths: 4,
@@ -114,9 +103,9 @@ const Index = () => {
                 featured: true
               },
               {
-                title: "Luxury Penthouse",
-                location: "Downtown LA",
-                price: "$3.2M",
+                title: "Premium Apartment",
+                location: "Kalyani Nagar",
+                price: "₹2.8 Cr",
                 image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
                 beds: 3,
                 baths: 3,
@@ -124,13 +113,13 @@ const Index = () => {
                 featured: true
               },
               {
-                title: "Waterfront Estate",
-                location: "Malibu",
-                price: "$8.9M",
+                title: "Garden Home",
+                location: "Baner",
+                price: "₹3.2 Cr",
                 image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
-                beds: 6,
-                baths: 5,
-                size: "6,500 sq ft",
+                beds: 4,
+                baths: 4,
+                size: "3,500 sq ft",
                 featured: true
               },
             ].map((property, i) => (
@@ -149,7 +138,7 @@ const Index = () => {
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-2xl font-bold mb-2 group-hover:text-blue-400 transition-colors">
+                    <h3 className="text-xl md:text-2xl font-bold mb-2 group-hover:text-blue-400 transition-colors">
                       {property.title}
                     </h3>
                     <p className="flex items-center gap-2 text-white/90 mb-3">
@@ -157,7 +146,7 @@ const Index = () => {
                       {property.location}
                     </p>
                     <div className="flex items-center justify-between">
-                      <span className="text-2xl font-bold text-blue-400">{property.price}</span>
+                      <span className="text-xl md:text-2xl font-bold text-blue-400">{property.price}</span>
                       <div className="flex items-center gap-4 text-white/90">
                         <span className="flex items-center gap-1">
                           <BedDouble className="w-4 h-4" />
@@ -167,7 +156,7 @@ const Index = () => {
                           <Bath className="w-4 h-4" />
                           {property.baths}
                         </span>
-                        <span className="flex items-center gap-1">
+                        <span className="hidden md:flex items-center gap-1">
                           <Expand className="w-4 h-4" />
                           {property.size}
                         </span>
@@ -236,7 +225,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section with Enhanced Design */}
+      {/* Contact Section */}
       <section className="section-padding bg-gray-900 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <img
