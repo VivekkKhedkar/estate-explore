@@ -1,7 +1,8 @@
+
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Bath, BedDouble, Download, Expand, MapPin } from "lucide-react";
+import { Bath, BedDouble, Expand, MapPin, Download } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface Property {
@@ -13,45 +14,25 @@ interface Property {
   bathrooms: number;
   size: string;
   image: string;
-  type: string;
+  description: string;
+  amenities: string[];
 }
 
-const propertiesData: Property[] = [
+const residentialProperties: Property[] = [
   {
     id: 1,
-    title: "Luxury Villa",
+    title: "Premium 4BHK Villa",
     location: "Koregaon Park, Pune",
-    price: "₹4.5 Cr",
-    bedrooms: 5,
+    price: "₹5.8 Cr",
+    bedrooms: 4,
     bathrooms: 4,
     size: "4,200 sq ft",
     image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9",
-    type: "residential"
+    description: "Luxurious villa with modern amenities, landscaped garden, and premium finishes.",
+    amenities: ["Swimming Pool", "Gym", "Club House", "24x7 Security", "Servant Quarter"]
   },
   {
     id: 2,
-    title: "Premium Office Space",
-    location: "Hinjewadi, Pune",
-    price: "₹12.5 Cr",
-    bedrooms: null,
-    bathrooms: null,
-    size: "15,000 sq ft",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab",
-    type: "commercial"
-  },
-  {
-    id: 3,
-    title: "NA Plot",
-    location: "Wagholi, Pune",
-    price: "₹1.8 Cr",
-    bedrooms: null,
-    bathrooms: null,
-    size: "2,400 sq ft",
-    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef",
-    type: "plot"
-  },
-  {
-    id: 4,
     title: "Luxury Apartment",
     location: "Kalyani Nagar, Pune",
     price: "₹3.2 Cr",
@@ -59,25 +40,24 @@ const propertiesData: Property[] = [
     bathrooms: 3,
     size: "2,100 sq ft",
     image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
-    type: "residential"
+    description: "High-rise apartment with stunning city views and premium facilities.",
+    amenities: ["Terrace Garden", "Modern Kitchen", "Reserved Parking", "Power Backup"]
   },
   {
-    id: 5,
-    title: "Retail Space",
-    location: "MG Road, Camp, Pune",
-    price: "₹8.2 Cr",
-    bedrooms: null,
-    bathrooms: null,
-    size: "8,500 sq ft",
-    image: "https://images.unsplash.com/photo-1577760258779-e3cc2642b5d4",
-    type: "commercial"
+    id: 3,
+    title: "Garden Bungalow",
+    location: "Baner, Pune",
+    price: "₹4.5 Cr",
+    bedrooms: 5,
+    bathrooms: 5,
+    size: "3,800 sq ft",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+    description: "Spacious bungalow with large garden space and modern interiors.",
+    amenities: ["Large Garden", "Modular Kitchen", "Solar Power", "Rain Water Harvesting"]
   }
 ];
 
-const Properties = () => {
-  const [selectedType, setSelectedType] = useState<string>("all");
-  const [priceRange, setPriceRange] = useState<string>("all");
-
+const Residential = () => {
   return (
     <div className="animate-fade-in">
       {/* Hero Section */}
@@ -85,7 +65,7 @@ const Properties = () => {
         <div
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1582407947304-fd86f028f716')",
+            backgroundImage: "url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -94,45 +74,16 @@ const Properties = () => {
         </div>
         
         <div className="relative z-10 text-center text-white">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Properties</h1>
-          <p className="text-xl text-white/90">Discover your perfect home from our exclusive collection</p>
-        </div>
-      </section>
-
-      {/* Filters */}
-      <section className="py-8 px-4 bg-gray-50">
-        <div className="container mx-auto">
-          <div className="flex flex-wrap gap-4 justify-center">
-            <select
-              className="px-4 py-2 rounded-lg border"
-              value={selectedType}
-              onChange={(e) => setSelectedType(e.target.value)}
-            >
-              <option value="all">All Types</option>
-              <option value="house">House</option>
-              <option value="apartment">Apartment</option>
-              <option value="villa">Villa</option>
-            </select>
-            <select
-              className="px-4 py-2 rounded-lg border"
-              value={priceRange}
-              onChange={(e) => setPriceRange(e.target.value)}
-            >
-              <option value="all">All Prices</option>
-              <option value="1000000">Under $1M</option>
-              <option value="2000000">$1M - $2M</option>
-              <option value="3000000">$2M - $3M</option>
-              <option value="3000001">Above $3M</option>
-            </select>
-          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Residential Properties</h1>
+          <p className="text-xl text-white/90">Discover Your Dream Home in Pune</p>
         </div>
       </section>
 
       {/* Properties Grid */}
       <section className="section-padding">
-        <div className="container mx-auto">
+        <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {propertiesData.map((property) => (
+            {residentialProperties.map((property) => (
               <Card key={property.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                 <div className="relative h-64">
                   <img
@@ -156,6 +107,7 @@ const Properties = () => {
                 </CardHeader>
 
                 <CardContent>
+                  <p className="text-gray-600 mb-4">{property.description}</p>
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-2xl font-bold text-blue-600">{property.price}</span>
                     <div className="flex items-center gap-4 text-gray-600">
@@ -172,6 +124,13 @@ const Properties = () => {
                         {property.size}
                       </span>
                     </div>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {property.amenities.map((amenity, index) => (
+                      <span key={index} className="text-sm bg-blue-50 text-blue-700 px-2 py-1 rounded-full">
+                        {amenity}
+                      </span>
+                    ))}
                   </div>
                 </CardContent>
 
@@ -190,4 +149,4 @@ const Properties = () => {
   );
 };
 
-export default Properties;
+export default Residential;
