@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Bath, BedDouble, Expand, MapPin, Star } from "lucide-react";
@@ -12,6 +11,7 @@ interface Property {
   beds: number;
   baths: number;
   size: string;
+  type: string;
   featured: boolean;
 }
 
@@ -24,28 +24,53 @@ const featuredProperties: Property[] = [
     beds: 5,
     baths: 4,
     size: "4,200 sq ft",
+    type: "Residential",
     featured: true
   },
   {
-    title: "Premium Apartment",
+    title: "Commercial Space",
+    location: "Baner Road",
+    price: "₹8.2 Cr",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab",
+    beds: null,
+    baths: null,
+    size: "8,500 sq ft",
+    type: "Commercial",
+    featured: true
+  },
+  {
+    title: "NA Plot",
+    location: "Wagholi",
+    price: "₹1.8 Cr",
+    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef",
+    beds: null,
+    baths: null,
+    size: "2,400 sq ft",
+    type: "Plot",
+    featured: true
+  },
+  {
+    title: "Penthouse",
     location: "Kalyani Nagar",
-    price: "₹2.8 Cr",
+    price: "₹3.9 Cr",
     image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
-    beds: 3,
-    baths: 3,
-    size: "2,800 sq ft",
-    featured: true
-  },
-  {
-    title: "Garden Home",
-    location: "Baner",
-    price: "₹3.2 Cr",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
     beds: 4,
     baths: 4,
-    size: "3,500 sq ft",
+    size: "3,800 sq ft",
+    type: "Residential",
     featured: true
   },
+  {
+    title: "Office Complex",
+    location: "Hinjewadi",
+    price: "₹12.5 Cr",
+    image: "https://images.unsplash.com/photo-1577760258779-e3cc2642b5d4",
+    beds: null,
+    baths: null,
+    size: "15,000 sq ft",
+    type: "Commercial",
+    featured: true
+  }
 ];
 
 export const FeaturedProperties = () => {
